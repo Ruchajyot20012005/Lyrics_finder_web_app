@@ -1,17 +1,19 @@
 import { Container, TextField, Button } from "@mui/material";
 import React, { useState, useContext } from "react";
-import { GlobleState } from "../pages";
 import { Context } from "vm";
+import { GlobleState } from "../pages";
 
 const SearchBox = () => {
   const { mystate, getTitle, heading } = useContext<Context>(GlobleState);
   const [title, setTitle] = useState("");
 
-  function handleChange(e: Context) {
+  function handleChange(e: {
+    preventDefault: () => void;
+    target: { value: React.SetStateAction<string> };
+  }): void {
     e.preventDefault();
     setTitle(e.target.value);
   }
-  console.log(title);
 
   return (
     <Container
@@ -35,7 +37,9 @@ const SearchBox = () => {
         />
       </div>
       <Button
-        onClick={() => getTitle(title)}
+        onClick={() => {
+          getTitle(title);
+        }}
         variant="contained"
         disableElevation
       >

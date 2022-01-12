@@ -1,19 +1,21 @@
 import React from "react";
-import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import { Card, Button } from "@mui/material";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import AlbumIcon from "@mui/icons-material/Album";
 import Link from "next/link";
-import { Context } from "vm";
 
 type props = {
-  track: Context;
+  track: {
+    track_name: string;
+    track_id: string;
+    artist_name: string;
+  };
 };
+
 const SingleCard = ({ track }: props) => {
   return (
     <Card sx={{ display: "flex", boxShadow: 2 }}>

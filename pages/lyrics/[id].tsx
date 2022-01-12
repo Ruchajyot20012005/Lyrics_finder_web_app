@@ -1,6 +1,5 @@
 import { Container, AppBar, Button } from "@mui/material";
 import { Box } from "@mui/system";
-import { Context } from "vm";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
@@ -8,8 +7,8 @@ import Link from "next/link";
 
 const Lyrics = () => {
   const { query } = useRouter();
-  const [track, setTrack] = useState<Context>();
-  const [lyrics, setLyrics] = useState<Context>({});
+  const [track, setTrack] = useState({ track_name: "" });
+  const [lyrics, setLyrics] = useState({ lyrics_body: "" });
 
   useEffect(() => {
     axios
